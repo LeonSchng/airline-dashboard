@@ -1,0 +1,459 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!doctype html&gt;</p>
+<p class="p1">&lt;html lang="de"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="utf-8" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Airline Sustainability Dashboard — Pro&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>:root {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--bg:#0b1220; --bg2:#0d1426; --card:#0f172a; --card2:#111827;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--text:#e5e7eb; --muted:#94a3b8; --border:#1f2937; --accent:#60a5fa; --good:#22c55e; --bad:#ef4444;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>*{ box-sizing:border-box }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>html, body{ height:100% }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color:var(--text);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: radial-gradient(1200px 600px at 20% -10%, #1e293b55, transparent),</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>radial-gradient(1000px 500px at 120% 10%, #0ea5e955, transparent),</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>linear-gradient(180deg, var(--bg), var(--bg2));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>a { color:#93c5fd }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.wrap{ max-width:1240px; margin: 28px auto; padding: 0 16px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.header { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:12px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>h1{ margin:0; font-size:24px; letter-spacing:.2px }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.badge{ font-size:12px; background:#1d4ed8; color:white; padding:2px 8px; border-radius:999px; margin-left:8px }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.controls{ display:grid; grid-template-columns: 1fr 1fr 2fr; gap:16px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.card{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid var(--border); border-radius:16px; padding:14px 14px 12px; box-shadow: 0 6px 20px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.02);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.card h2{ margin:0 0 10px 0; font-size:16px; color:#e2e8f0; display:flex; align-items:center; justify-content:space-between }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.sub{ font-size:12px; color:var(--muted) }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>label{ font-size:12px; color:var(--muted); display:block; margin-bottom:6px }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>input[type="file"], select, button {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width:100%; background:#0b1220; color:var(--text); border:1px solid var(--border); border-radius:12px; padding:10px 12px; font-size:14px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.row{ display:flex; gap:10px; flex-wrap:wrap; align-items:center }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.chips{ display:flex; gap:8px; flex-wrap:wrap; max-height:130px; overflow:auto; padding:8px; border:1px dashed var(--border); border-radius:12px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.chip{ display:flex; align-items:center; gap:8px; background:#0b1220; border:1px solid var(--border); padding:6px 10px; border-radius:999px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.chip input{ accent-color:#60a5fa }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.year-chips{ display:flex; gap:8px; flex-wrap:wrap; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.year-btn{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:#0b1220; color:var(--text); border:1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius:999px; padding:6px 10px; cursor:pointer; width:auto;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.year-btn.active{ border-color: var(--accent); box-shadow:0 0 0 2px rgba(96,165,250,.25) inset; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.btn{ cursor:pointer }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.btn.secondary{ background:#0b1220 }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.grid{ display:grid; grid-template-columns: 1fr; gap:16px; margin-top:16px }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>@media(min-width:1000px){ .grid{ grid-template-columns: 1fr 1fr; } }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>@media(min-width:1300px){ .grid{ grid-template-columns: 1fr 1fr 1fr; } }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>canvas{ max-height: 260px !important; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pill{ font-size:12px; border:1px solid var(--border); padding:4px 8px; border-radius:999px; color:var(--muted) }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.status{ padding:8px 10px; border:1px solid; border-radius:12px; font-size:13px; display:none }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.ok{ border-color:#16a34a; color:#16a34a; background:#052e1650 }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.warn{ border-color:#b45309; color:#b45309; background:#2e1b0550 }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.err{ border-color:#dc2626; color:#dc2626; background:#3f0d1450 }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.tile-head{ display:flex; gap:8px; align-items:center; justify-content:space-between; margin-bottom:8px }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.tile-actions{ display:flex; gap:8px; align-items:center }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.tile-actions .btn{ padding:6px 10px }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.muted{ color:var(--muted) }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Avatare/Logos */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.avatar{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width:18px; height:18px; border-radius:999px; display:inline-flex; align-items:center; justify-content:center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size:10px; font-weight:700; color:white; background:#334155; overflow:hidden;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.avatar img{ width:100%; height:100%; object-fit:cover; display:block; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="wrap"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h1&gt;Airline Sustainability Dashboard &lt;span class="badge"&gt;Pro&lt;/span&gt;&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="pill" id="summaryPill"&gt;–&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="controls"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label for="csv"&gt;CSV-Datei&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input id="csv" type="file" accept=".csv" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="status" class="status warn" style="margin-top:8px"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;Jahre&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="yearChips" class="year-chips"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;Airlines (Mehrfachauswahl)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="airlineChips" class="chips"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="row" style="margin-top:8px"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button class="btn" id="btnAll"&gt;Alle&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button class="btn" id="btnNone"&gt;Keine&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="muted"&gt;Tipp: Nur Airlines auswählen, die du vergleichen willst.&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="grid" id="tiles"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- Kacheln werden per JS erzeugt --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- Libraries --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"&gt;&lt;/script&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* ===== Logos: Airline-Name -&gt; Logo-URL (optional) =====</p>
+<p class="p1"><span class="Apple-converted-space">       </span>Beispiel:</p>
+<p class="p1"><span class="Apple-converted-space">       </span>const LOGOS = { 'Eurowings': 'img/eurowings.png', 'Lufthansa': 'img/lh.svg' };</p>
+<p class="p1"><span class="Apple-converted-space">       </span>Lässt du Einträge weg, werden Platzhalter mit Initialen gezeigt. */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const LOGOS = {};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* ===== Kacheln / Metriken ===== */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const TILES = [</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ id: 'slf_pct', label: 'Seat load factor', unit: '%', cat:'Traffic', kind:'intensity', defSort:'desc' },</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ id: 'passengers', label: 'Passengers', unit: 'people', cat:'Traffic', kind:'absolute', defSort:'desc' },</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ id: 'flights', label: 'Flights', unit: 'flights', cat:'Traffic', kind:'absolute', defSort:'desc' },</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ id: 'ask_mio_pkm', label: 'ASK', unit: 'million pkm', cat:'Traffic', kind:'absolute', defSort:'desc' },</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ id: 'rpk_mio_pkm', label: 'RPK', unit: 'million pkm', cat:'Traffic', kind:'absolute', defSort:'desc' },</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ id: 'co2_total_t', label: 'CO₂ total', unit: 't', cat:'Emissions', kind:'absolute', defSort:'asc' },</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ id: 'fuel_total_t', label: 'Fuel total', unit: 't', cat:'Emissions', kind:'absolute', defSort:'asc' },</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ id: 'spec_co2', label: 'Specific CO₂', unit: 'kg/100 pkm', cat:'Intensity', kind:'intensity', defSort:'asc',</p>
+<p class="p1"><span class="Apple-converted-space">        </span>variants: [</p>
+<p class="p1"><span class="Apple-converted-space">          </span>{ key:'spec_co2_pax_kg_per_100pkm', label:'Overall' },</p>
+<p class="p1"><span class="Apple-converted-space">          </span>{ key:'spec_co2_longhaul_kg_per_100pkm', label:'Long-haul' },</p>
+<p class="p1"><span class="Apple-converted-space">          </span>{ key:'spec_co2_mediumhaul_kg_per_100pkm', label:'Medium-haul' },</p>
+<p class="p1"><span class="Apple-converted-space">          </span>{ key:'spec_co2_shorthaul_kg_per_100pkm', label:'Short-haul' },</p>
+<p class="p1"><span class="Apple-converted-space">        </span>]},</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ id: 'spec_fuel', label: 'Specific fuel', unit: 'L/100 pkm', cat:'Intensity', kind:'intensity', defSort:'asc',</p>
+<p class="p1"><span class="Apple-converted-space">        </span>variants: [</p>
+<p class="p1"><span class="Apple-converted-space">          </span>{ key:'spec_fuel_pax_l_per_100pkm', label:'Overall' },</p>
+<p class="p1"><span class="Apple-converted-space">          </span>{ key:'spec_fuel_longhaul_l_per_100pkm', label:'Long-haul' },</p>
+<p class="p1"><span class="Apple-converted-space">          </span>{ key:'spec_fuel_mediumhaul_l_per_100pkm', label:'Medium-haul' },</p>
+<p class="p1"><span class="Apple-converted-space">          </span>{ key:'spec_fuel_shorthaul_l_per_100pkm', label:'Short-haul' },</p>
+<p class="p1"><span class="Apple-converted-space">        </span>]},</p>
+<p class="p1"><span class="Apple-converted-space">    </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* ===== Zahlenformat (de-DE) ===== */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const NF0 = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 });</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const NF1 = new Intl.NumberFormat('de-DE', { minimumFractionDigits: 1, maximumFractionDigits: 1 });</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const NF2 = new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function fmt(metricId, v) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (v === null || v === undefined || isNaN(v)) return '–';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (metricId === 'slf_pct') return NF1.format(v);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (metricId.startsWith('spec_')) return NF2.format(v);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return NF0.format(v);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* ===== State ===== */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let allRows = [];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let selected = new Set();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let charts = new Map();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let yearsAvail = [];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let currentYear = null;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* ===== Utilities ===== */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function parseNumber(v) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (v === null || v === undefined) return null;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (typeof v === 'number') return v;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>let s = (''+v).trim();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (!s) return null;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>s = s.replace(/\s+/g,'').replace(/\./g,'').replace(/,/g,'.');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const n = Number(s); return isNaN(n) ? null : n;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function uniq(arr) { return Array.from(new Set(arr)); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function normKey(k){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return String(k||'').toLowerCase().replace(/[()]/g,'').replace(/\s+/g,'_')</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.replace(/-/g,'_').replace(/%/g,'pct').replace(/\//g,'_per_').replace(/__+/g,'_').trim();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function canonicalizeKey(nk){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>nk = nk.replace(/^reportingyear$/,'year')</p>
+<p class="p1"><span class="Apple-converted-space">             </span>.replace(/^foundingyear$/,'founded_year')</p>
+<p class="p1"><span class="Apple-converted-space">             </span>.replace(/^airplanes?$/,'aircraft')</p>
+<p class="p1"><span class="Apple-converted-space">             </span>.replace(/^destinationssummer$/,'destinations_summer')</p>
+<p class="p1"><span class="Apple-converted-space">             </span>.replace(/^routessummer$/,'routes_summer')</p>
+<p class="p1"><span class="Apple-converted-space">             </span>.replace(/^askmiopkm$/,'ask_mio_pkm')</p>
+<p class="p1"><span class="Apple-converted-space">             </span>.replace(/^rpkmiopkm$/,'rpk_mio_pkm')</p>
+<p class="p1"><span class="Apple-converted-space">             </span>.replace(/^co2(emissions)?_total(_t)?$/,'co2_total_t')</p>
+<p class="p1"><span class="Apple-converted-space">             </span>.replace(/^specco2(emissions)?/,'spec_co2_')</p>
+<p class="p1"><span class="Apple-converted-space">             </span>.replace(/kg_?per_?100_?pkm$/,'kg_per_100pkm')</p>
+<p class="p1"><span class="Apple-converted-space">             </span>.replace(/l_?per_?100_?pkm$/,'l_per_100pkm')</p>
+<p class="p1"><span class="Apple-converted-space">             </span>.replace(/langstrecke/,'longhaul').replace(/mittelstrecke/,'mediumhaul').replace(/kurzstrecke/,'shorthaul');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (nk.startsWith('spec_fuel_') &amp;&amp; !/_l_per_100pkm$/.test(nk)) nk += '_l_per_100pkm';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (nk.startsWith('spec_co2_') &amp;&amp; !/_kg_per_100pkm$/.test(nk)) nk += '_kg_per_100pkm';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return nk;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function normalizeRow(row){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const out = {};</p>
+<p class="p1"><span class="Apple-converted-space">      </span>for (const [k,v] of Object.entries(row)){</p>
+<p class="p1"><span class="Apple-converted-space">        </span>out[canonicalizeKey(normKey(k))] = v;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return out;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function setStatus(kind, html){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const el = document.getElementById('status');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>el.className = 'status ' + kind;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>el.innerHTML = html;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>el.style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function clearStatus(){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const el = document.getElementById('status');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>el.style.display = 'none'; el.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* ===== Jahr-Buttons ===== */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function setYearButtons(){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>yearsAvail = uniq(allRows.map(r =&gt; r.year).filter(Number.isFinite)).sort((a,b)=&gt;a-b);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const cont = document.getElementById('yearChips');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cont.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (!yearsAvail.length){ cont.innerHTML = '&lt;span class="muted"&gt;–&lt;/span&gt;'; return; }</p>
+<p class="p1"><span class="Apple-converted-space">      </span>currentYear = yearsAvail[yearsAvail.length-1];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>yearsAvail.forEach(y =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const btn = document.createElement('button');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.className = 'year-btn' + (y===currentYear ? ' active':'');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.textContent = y;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>currentYear = y;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>Array.from(cont.children).forEach(c =&gt; c.classList.remove('active'));</p>
+<p class="p1"><span class="Apple-converted-space">          </span>btn.classList.add('active');</p>
+<p class="p1"><span class="Apple-converted-space">          </span>renderAll();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>cont.appendChild(btn);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* ===== Avatar/Logo-Helper ===== */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function avatarHTML(name){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const url = LOGOS[name];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (url){</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return `&lt;span class="avatar"&gt;&lt;img src="${url}" alt="${name}"&gt;&lt;/span&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>// Platzhalter: Initialen + stabile Farbe</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const parts = String(name||'').trim().split(/\s+/);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const initials = (parts[0]?.[0]||'').toUpperCase() + (parts.length&gt;1 ? (parts[parts.length-1]?.[0]||'').toUpperCase() : (parts[0]?.[1]||'').toUpperCase());</p>
+<p class="p1"><span class="Apple-converted-space">      </span>let h = 0; for (let i=0;i&lt;name.length;i++) h = (h*31 + name.charCodeAt(i))&gt;&gt;&gt;0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const hue = h % 360;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return `&lt;span class="avatar" style="background:hsl(${hue},70%,50%)"&gt;${initials||'?'}&lt;/span&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* ===== Tiles aufbauen ===== */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function buildTiles(){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const container = document.getElementById('tiles');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>container.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>TILES.forEach(tile =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const div = document.createElement('div');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>div.className = 'card';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>div.id = 'tile_'+tile.id;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>let variantHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (tile.variants){</p>
+<p class="p1"><span class="Apple-converted-space">          </span>variantHTML = '&lt;select data-tile="'+tile.id+'" class="variantSel"&gt;' +</p>
+<p class="p1"><span class="Apple-converted-space">            </span>tile.variants.map((v,i)=&gt;`&lt;option value="${v.key}" ${i===0?'selected':''}&gt;${v.label}&lt;/option&gt;`).join('') +</p>
+<p class="p1"><span class="Apple-converted-space">            </span>'&lt;/select&gt;';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>div.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="tile-head"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="sub"&gt;${tile.cat}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;h2&gt;${tile.label} &lt;span class="sub"&gt;(${tile.unit})&lt;/span&gt;&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="tile-actions"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>${variantHTML}</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;button class="btn" data-dl="${tile.id}"&gt;PNG&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;canvas id="chart_${tile.id}"&gt;&lt;/canvas&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>container.appendChild(div);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>// Varianten-Listener</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.querySelectorAll('.variantSel').forEach(sel =&gt; sel.addEventListener('change', renderAll));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>// Download-Buttons</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.querySelectorAll('[data-dl]').forEach(btn =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.addEventListener('click', (e) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const id = e.currentTarget.getAttribute('data-dl');</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const ch = charts.get(id);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>if (!ch) return;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const url = ch.toBase64Image();</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const a = document.createElement('a');</p>
+<p class="p1"><span class="Apple-converted-space">          </span>a.href = url; a.download = `${id}-${currentYear}.png`; a.click();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function populateAirlines(){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const chips = document.getElementById('airlineChips');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>chips.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const airlines = uniq(allRows.map(r =&gt; String(r.airline))).sort();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>airlines.forEach(a =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const id = 'air_'+a.replace(/\W+/g,'_');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const lab = document.createElement('label');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>lab.className = 'chip';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>lab.innerHTML = `&lt;input type="checkbox" id="${id}" data-a="${a}"&gt; ${avatarHTML(a)} &lt;span&gt;${a}&lt;/span&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>chips.appendChild(lab);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const inp = lab.querySelector('input');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>inp.checked = selected.size ? selected.has(a) : airlines.indexOf(a) &lt; 5;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (inp.checked) selected.add(a);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>inp.addEventListener('change', (ev) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>if (ev.target.checked) selected.add(a); else selected.delete(a);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>renderAll();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('btnAll').onclick = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>selected = new Set(airlines);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>chips.querySelectorAll('input').forEach(i =&gt; i.checked = true);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderAll();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>};</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('btnNone').onclick = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>selected = new Set();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>chips.querySelectorAll('input').forEach(i =&gt; i.checked = false);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderAll();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>};</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function summaryPill(){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const airlines = uniq(allRows.filter(r =&gt; r.year === currentYear).map(r =&gt; r.airline)).length;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const srcs = uniq(allRows.filter(r =&gt; r.year === currentYear).map(r =&gt; r.source)).length;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('summaryPill').textContent = `${currentYear} • ${airlines} Airlines • ${srcs} Quellen`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderTile(tile){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const canvas = document.getElementById('chart_'+tile.id).getContext('2d');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (charts.has(tile.id)){ charts.get(tile.id).destroy(); charts.delete(tile.id); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>let key = tile.id;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (tile.variants){</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const sel = document.querySelector(`select[data-tile="${tile.id}"]`);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>key = sel ? sel.value : tile.variants[0].key;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const rows = allRows.filter(r =&gt; r.year === currentYear &amp;&amp; selected.has(String(r.airline)));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const data = rows.map(r =&gt; ({</p>
+<p class="p1"><span class="Apple-converted-space">        </span>airline: r.airline, val: (r[key]!==undefined &amp;&amp; r[key]!==null) ? Number(r[key]) : null, src: r.source || ''</p>
+<p class="p1"><span class="Apple-converted-space">      </span>})).filter(x =&gt; x.val !== null);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const sortDir = tile.defSort || (tile.kind === 'intensity' ? 'asc' : 'desc');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>data.sort((a,b)=&gt; sortDir==='asc' ? (a.val-b.val) : (b.val-a.val));</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const labels = data.map(d =&gt; d.airline);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const values = data.map(d =&gt; d.val);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const chart = new Chart(canvas, {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>type: 'bar',</p>
+<p class="p1"><span class="Apple-converted-space">        </span>data: {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>labels,</p>
+<p class="p1"><span class="Apple-converted-space">          </span>datasets: [{ label: `${tile.label} (${tile.unit})`, data: values, borderWidth: 1 }]</p>
+<p class="p1"><span class="Apple-converted-space">        </span>},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>options: {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>indexAxis: 'y',</p>
+<p class="p1"><span class="Apple-converted-space">          </span>responsive: true,</p>
+<p class="p1"><span class="Apple-converted-space">          </span>maintainAspectRatio: false,</p>
+<p class="p1"><span class="Apple-converted-space">          </span>scales: {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>x: { ticks: { callback:(v)=&gt;fmt(tile.variants? 'spec_' : tile.id, v) }, grid:{ color:'#1f293733' } },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>y: { grid:{ display:false } }</p>
+<p class="p1"><span class="Apple-converted-space">          </span>},</p>
+<p class="p1"><span class="Apple-converted-space">          </span>plugins: {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>legend: { display:false },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>tooltip: { callbacks: {</p>
+<p class="p1"><span class="Apple-converted-space">              </span>label: (ctx)=&gt; `${fmt(tile.variants? 'spec_' : tile.id, ctx.parsed.x)} ${tile.unit}`</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>datalabels: {</p>
+<p class="p1"><span class="Apple-converted-space">              </span>anchor: 'end', align: 'right', clamp:true,</p>
+<p class="p1"><span class="Apple-converted-space">              </span>formatter:(v)=&gt; fmt(tile.variants? 'spec_' : tile.id, v),</p>
+<p class="p1"><span class="Apple-converted-space">              </span>color:'#cbd5e1'</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">          </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>plugins: [ChartDataLabels]</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p1"><span class="Apple-converted-space">      </span>charts.set(tile.id, chart);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderAll(){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>summaryPill();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>TILES.forEach(renderTile);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* ===== CSV-Handling ===== */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('csv').addEventListener('change', (e)=&gt;{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const f = e.target.files &amp;&amp; e.target.files[0];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (!f) return;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>Papa.parse(f, {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>header:true, dynamicTyping:false, skipEmptyLines:true,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>complete: (res)=&gt;{</p>
+<p class="p1"><span class="Apple-converted-space">          </span>try{</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const norm = res.data.map(normalizeRow);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const rows = norm.map(r =&gt; ({</p>
+<p class="p1"><span class="Apple-converted-space">              </span>...r,</p>
+<p class="p1"><span class="Apple-converted-space">              </span>year: parseNumber(r.year),</p>
+<p class="p1"><span class="Apple-converted-space">              </span>employees: parseNumber(r.employees),</p>
+<p class="p1"><span class="Apple-converted-space">              </span>aircraft: parseNumber(r.aircraft),</p>
+<p class="p1"><span class="Apple-converted-space">              </span>destinations_summer: parseNumber(r.destinations_summer),</p>
+<p class="p1"><span class="Apple-converted-space">              </span>routes_summer: parseNumber(r.routes_summer),</p>
+<p class="p1"><span class="Apple-converted-space">              </span>flights: parseNumber(r.flights),</p>
+<p class="p1"><span class="Apple-converted-space">              </span>passengers: parseNumber(r.passengers),</p>
+<p class="p1"><span class="Apple-converted-space">              </span>ask_mio_pkm: parseNumber(r.ask_mio_pkm),</p>
+<p class="p1"><span class="Apple-converted-space">              </span>rpk_mio_pkm: parseNumber(r.rpk_mio_pkm),</p>
+<p class="p1"><span class="Apple-converted-space">              </span>slf_pct: parseNumber(r.slf_pct),</p>
+<p class="p1"><span class="Apple-converted-space">              </span>fuel_total_t: parseNumber(r.fuel_total_t),</p>
+<p class="p1"><span class="Apple-converted-space">              </span>spec_fuel_pax_l_per_100pkm: parseNumber(r.spec_fuel_pax_l_per_100pkm),</p>
+<p class="p1"><span class="Apple-converted-space">              </span>spec_fuel_longhaul_l_per_100pkm: parseNumber(r.spec_fuel_longhaul_l_per_100pkm),</p>
+<p class="p1"><span class="Apple-converted-space">              </span>spec_fuel_mediumhaul_l_per_100pkm: parseNumber(r.spec_fuel_mediumhaul_l_per_100pkm),</p>
+<p class="p1"><span class="Apple-converted-space">              </span>spec_fuel_shorthaul_l_per_100pkm: parseNumber(r.spec_fuel_shorthaul_l_per_100pkm),</p>
+<p class="p1"><span class="Apple-converted-space">              </span>co2_total_t: parseNumber(r.co2_total_t),</p>
+<p class="p1"><span class="Apple-converted-space">              </span>spec_co2_pax_kg_per_100pkm: parseNumber(r.spec_co2_pax_kg_per_100pkm),</p>
+<p class="p1"><span class="Apple-converted-space">              </span>spec_co2_longhaul_kg_per_100pkm: parseNumber(r.spec_co2_longhaul_kg_per_100pkm),</p>
+<p class="p1"><span class="Apple-converted-space">              </span>spec_co2_mediumhaul_kg_per_100pkm: parseNumber(r.spec_co2_mediumhaul_kg_per_100pkm),</p>
+<p class="p1"><span class="Apple-converted-space">              </span>spec_co2_shorthaul_kg_per_100pkm: parseNumber(r.spec_co2_shorthaul_kg_per_100pkm),</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>allRows = rows.filter(r =&gt; r.airline &amp;&amp; Number.isFinite(r.year));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!allRows.length){</p>
+<p class="p1"><span class="Apple-converted-space">              </span>setStatus('err','Keine gültigen Zeilen gefunden. Prüfe Spalten &lt;code&gt;airline&lt;/code&gt; und &lt;code&gt;year&lt;/code&gt;.');</p>
+<p class="p1"><span class="Apple-converted-space">              </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>clearStatus();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>buildTiles();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>populateAirlines();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>setYearButtons(); <span class="Apple-converted-space">  </span>// &lt;-- statt Slider</p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderAll();</p>
+<p class="p1"><span class="Apple-converted-space">          </span>}catch(err){</p>
+<p class="p1"><span class="Apple-converted-space">            </span>console.error(err);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>setStatus('err','Fehler beim Verarbeiten der CSV: '+err.message);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>error: (err)=&gt;{</p>
+<p class="p1"><span class="Apple-converted-space">          </span>console.error(err);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>setStatus('err','CSV konnte nicht gelesen werden: '+err.message);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Layout vorab sichtbar</p>
+<p class="p1"><span class="Apple-converted-space">    </span>buildTiles();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
